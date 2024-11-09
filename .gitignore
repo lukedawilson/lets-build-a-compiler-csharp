@@ -1,0 +1,87 @@
+# Build artifacts
+bin/
+obj/
+out/
+
+# VS Code files
+.vscode/
+.vscode/settings.json
+
+# Rider IDE files
+.idea/
+*.sln.iml
+.idea_modules/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/libraries/
+.idea/**/shelf/
+.idea/**/idea.properties
+.idea/**/modules.xml
+.idea/**/modules/
+.idea/**/misc.xml
+.idea/**/vcs.xml
+.idea/.name
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono auto generated files
+mono_crash.*
+
+# Mac files
+.DS_Store
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Various IDE or text editor temp files
+*~ 
+*.swp
+*.sublime-workspace
+
+# Rider plugin data
+.idea/**/assets/
+
+# Exclude dependencies
+packages/
+node_modules/
+
+# Logs
+*.log
+
+# Uncomment if using npm to manage dependencies
+# node_modules/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+
+# .NET Core dependencies
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopCache/
+
+# .NET Core files
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Include IDE-specific and other local settings files
+*.sln.iml
