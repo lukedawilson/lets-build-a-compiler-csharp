@@ -1,5 +1,9 @@
 ﻿using SmallC;
 
-var cradle = new Cradle(args[0]);
-var compiler = new Compiler(cradle);
-compiler.Expression();
+var compiler = new Parser(args[0]);
+compiler.Assignment();
+
+if (compiler.Look != '\n')
+{
+    throw CompilationException.Expected("Newline");
+}
