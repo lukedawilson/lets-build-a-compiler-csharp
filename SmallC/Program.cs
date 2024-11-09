@@ -1,3 +1,5 @@
 ﻿using SmallC;
 
-var cradle = new Cradle("2");
+var cradle = new Cradle(args[0]);
+var compiler = new Compiler(cradle);
+compiler.Expression();

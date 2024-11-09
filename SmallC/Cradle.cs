@@ -1,25 +1,5 @@
 namespace SmallC;
 
-public class ParseException : Exception
-{
-    /// <summary>
-    /// Report an error
-    /// </summary>
-    private ParseException(string s) : base($"\a Error: {s}.")
-    {
-    }
-
-    /// <summary>
-    /// Report error and terminate
-    /// </summary>
-    public static ParseException Abort(string s) => new ParseException(s);
-
-    /// <summary>
-    /// Report what was expected
-    /// </summary>
-    public static ParseException Expected(string s) => Abort($"{s} Expected");
-}
-
 public class Cradle
 {
     public Cradle(string input)
@@ -28,54 +8,52 @@ public class Cradle
         GetChar();
     }
 
-    private const char Tab = '\t';
-
     private readonly string input;
     private int i = 0;
 
-    private char look;
+    public char Look { get; private set; }
 
     /// <summary>
     /// Read new character ftom input stream
     /// </summary>
-    private void GetChar()
+    public void GetChar()
     {
-        look = input[i++];
+        Look = i < input.Length ? input[i++] : default;
     }
 
     /// <summary>
     /// Match a specific input character
     /// </summary>
-    private void Match(char x)
+    public void Match(char x)
     {
-        if (look == x)
+        if (Look == x)
         {
             GetChar();
         }
         else
         {
-            throw ParseException.Expected($"'{x}'");
+            throw CompilationException.Expected($"'{x}'");
         }
     }
 
     /// <summary>
     /// Recognise an alpha character
     /// </summary>
-    private static bool IsAlpha(char c) => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+    public static bool IsAlpha(char c) => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 
     /// <summary>
     /// Recognise a decimal digit
     /// </summary>
-    private static bool IsDigit(char c) => c >= '0' && c <= '9';
+    public static bool IsDigit(char c) => c >= '0' && c <= '9';
 
     /// <summary>
     /// Get an identifier
     /// </summary>
-    private char GetName()
+    public char GetName()
     {
-        if (!IsAlpha(look)) throw ParseException.Expected("Name");
+        if (!IsAlpha(Look)) throw CompilationException.Expected("Name");
 
-        var getName = look.ToString().ToUpper()[0];
+        var getName = Look.ToString().ToUpper()[0];
         GetChar();
         return getName;
     }
@@ -83,15 +61,12 @@ public class Cradle
     /// <summary>
     /// Get a number
     /// </summary>
-    private char GetNum()
+    public char GetNum()
     {
-        if (!IsDigit(look)) throw ParseException.Expected("Integer");
+        if (!IsDigit(Look)) throw CompilationException.Expected("Integer");
 
-        var getNum = look.ToString().ToUpper()[0];
+        var getNum = Look.ToString().ToUpper()[0];
         GetChar();
         return getNum;
     }
-
-    private static void Emit(string s) => Console.Write($"{Tab}s");
-    private static void EmitLn(string s) => Console.WriteLine($"{Tab}s");
 }
