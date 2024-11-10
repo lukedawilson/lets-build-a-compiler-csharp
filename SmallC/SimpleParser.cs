@@ -9,7 +9,7 @@ public class SimpleParser
     }
 
     private readonly string input;
-    private int i = 0;
+    private int i;
 
     public char Look { get; private set; }
 

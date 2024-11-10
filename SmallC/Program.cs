@@ -1,9 +1,21 @@
 ﻿using SmallC;
 
-var compiler = new Parser(args[0]);
-compiler.Assignment();
+var interpreter = new Interpreter(args[0]);
 
-if (compiler.Look != '\n')
+do
 {
-    throw CompilationException.Expected("Newline");
-}
+    switch (interpreter.Look)
+    {
+        case '?':
+            interpreter.Input();
+            break;
+        case '!':
+            interpreter.Output();
+            break;
+        default:
+            interpreter.Assignment();
+            break;
+    }
+
+    interpreter.NewLine();
+} while (interpreter.Look != '.');

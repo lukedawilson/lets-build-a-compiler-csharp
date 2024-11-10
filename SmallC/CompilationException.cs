@@ -12,7 +12,7 @@ public class CompilationException : Exception
     /// <summary>
     /// Report error and terminate
     /// </summary>
-    public static CompilationException Abort(string s) => new CompilationException(s);
+    public static CompilationException Abort(string s) => new(s);
 
     /// <summary>
     /// Report what was expected
