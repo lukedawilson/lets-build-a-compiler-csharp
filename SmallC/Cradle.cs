@@ -49,7 +49,7 @@ public class Cradle
     /// <summary>
     /// Get an identifier
     /// </summary>
-    private char GetName()
+    public char GetName()
     {
         if (!IsAlpha(Look)) throw CompilationException.Expected("Name");
 
